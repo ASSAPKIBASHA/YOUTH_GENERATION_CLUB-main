@@ -2,13 +2,19 @@
   "name": "youth-generation-club",
   "version": "1.0.0",
   "description": "Youth Generation Club Website with Admin Panel",
+  "main": "backend/index.js",
   "scripts": {
+    "start": "node start.js",
     "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
     "dev:frontend": "cd frontend && npm run dev",
-    "dev:backend": "cd backend && npm start",
-    "build": "cd frontend && npm install && npm run build",
+    "dev:backend": "cd backend && npm run dev",
+    "build": "cd backend && npm install",
     "install:all": "npm install && cd frontend && npm install && cd ../backend && npm install",
-    "postinstall": "cd frontend && npm install"
+    "postinstall": "cd backend && npm install"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
   },
   "devDependencies": {
     "concurrently": "^8.2.2"

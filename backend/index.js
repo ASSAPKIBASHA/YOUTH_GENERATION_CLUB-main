@@ -3,29 +3,38 @@ const cors = require('cors');
 const fs = require('fs').promises;
 const path = require('path');
 const app = express();
+
+// Environment configuration
 const PORT = process.env.PORT || 4000;
+const NODE_ENV = process.env.NODE_ENV || 'development';
+const RAILWAY_ENVIRONMENT = process.env.RAILWAY_ENVIRONMENT || false;
 
 // Configure CORS for production and development
 const corsOptions = {
   origin: function (origin, callback) {
     // Allow requests with no origin (like mobile apps or curl requests)
     if (!origin) return callback(null, true);
-    
+
     // Allow localhost for development
     if (origin.includes('localhost') || origin.includes('127.0.0.1')) {
       return callback(null, true);
     }
-    
+
     // Allow Vercel domains
     if (origin.includes('vercel.app')) {
       return callback(null, true);
     }
-    
+
+    // Allow Railway domains
+    if (origin.includes('railway.app') || origin.includes('up.railway.app')) {
+      return callback(null, true);
+    }
+
     // Allow your custom domain if you have one
     // if (origin.includes('yourdomain.com')) {
     //   return callback(null, true);
     // }
-    
+
     callback(null, true); // Allow all origins for now - you can restrict this later
   },
   credentials: true
@@ -33,6 +42,22 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 app.use(express.json({ limit: '50mb' }));
+
+// Request logging middleware for production
+if (NODE_ENV === 'production' || RAILWAY_ENVIRONMENT) {
+  app.use((req, res, next) => {
+    console.log(`${new Date().toISOString()} - ${req.method} ${req.path}`);
+    next();
+  });
+}
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error('Error:', err);
+  res.status(500).json({
+    error: NODE_ENV === 'production' ? 'Internal server error' : err.message
+  });
+});
 
 // Database file path
 const DB_PATH = path.join(__dirname, 'database.json');
@@ -255,7 +280,23 @@ app.post('/api/join', async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, '0.0.0.0', () => {
   console.log(`Backend server running on port ${PORT}`);
-  console.log(`Health check available at: http://localhost:${PORT}/api/health`);
-}); 
+  console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
+  console.log(`Health check available at: /api/health`);
+});
+
+// Graceful shutdown
+process.on('SIGTERM', () => {
+  console.log('SIGTERM received, shutting down gracefully');
+  server.close(() => {
+    console.log('Process terminated');
+  });
+});
+
+process.on('SIGINT', () => {
+  console.log('SIGINT received, shutting down gracefully');
+  server.close(() => {
+    console.log('Process terminated');
+  });
+});
