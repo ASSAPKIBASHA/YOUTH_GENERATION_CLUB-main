@@ -1,0 +1,70 @@
+{
+  "gallery": [
+    {
+      "id": 1,
+      "title": "Leadership Workshop",
+      "description": "Young leaders developing skills",
+      "image": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      "uploadDate": "2024-03-15"
+    },
+    {
+      "id": 2,
+      "title": "Education Excellence",
+      "description": "Students achieving success",
+      "image": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      "uploadDate": "2024-03-10"
+    }
+  ],
+  "blogs": [
+    {
+      "id": 1,
+      "title": "Empowering African Youth Through Leadership",
+      "excerpt": "Discover how our leadership programs are transforming young Africans into confident community leaders...",
+      "content": "Our leadership development program has been a cornerstone of youth empowerment across Africa. Through intensive workshops, mentorship sessions, and hands-on community projects, we've seen remarkable transformations in young people's confidence and capabilities. The program focuses on developing essential leadership skills including communication, problem-solving, and emotional intelligence. Participants learn to identify community needs and implement sustainable solutions. Over the past year, we've trained over 500 young leaders who have gone on to create positive change in their communities. The impact extends beyond individual growth - these young leaders are inspiring others and building networks of change-makers across the continent.",
+      "author": "Sarah Johnson",
+      "date": "2024-03-15",
+      "category": "Leadership",
+      "image": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      "readTime": "5 min read",
+      "uploadDate": "2024-03-15"
+    },
+    {
+      "id": 2,
+      "title": "Innovation in Education: Digital Skills for Tomorrow",
+      "excerpt": "Exploring how technology is revolutionizing education for African youth and preparing them for the future...",
+      "content": "The digital revolution is transforming education across Africa, and our technology training programs are at the forefront of this change. We've developed comprehensive digital literacy courses that cover everything from basic computer skills to advanced programming and digital entrepreneurship. Our approach combines theoretical knowledge with practical application, ensuring students can immediately apply their learning. We've partnered with tech companies and educational institutions to provide cutting-edge resources and mentorship. The results have been impressive - 85% of our graduates have secured employment in tech-related fields or started their own digital businesses. This program is not just about teaching technical skills; it's about fostering innovation, creativity, and problem-solving abilities that will serve our youth throughout their careers.",
+      "author": "Michael Chen",
+      "date": "2024-03-10",
+      "category": "Technology",
+      "image": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      "readTime": "7 min read",
+      "uploadDate": "2024-03-10"
+    }
+  ],
+  "joinSubmissions": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "email": "john.doe@example.com",
+      "phone": "+1234567890",
+      "age": "18",
+      "location": "Nairobi, Kenya",
+      "interests": ["Leadership", "Technology"],
+      "message": "I'm interested in joining the youth club to develop my leadership skills.",
+      "submissionDate": "2024-03-15T10:30:00Z",
+      "status": "pending"
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "email": "jane.smith@example.com",
+      "phone": "+0987654321",
+      "age": "20",
+      "location": "Lagos, Nigeria",
+      "interests": ["Education", "Community Service"],
+      "message": "I want to contribute to community development through education programs.",
+      "submissionDate": "2024-03-14T15:45:00Z",
+      "status": "approved"
+    }
+  ]
+} 
